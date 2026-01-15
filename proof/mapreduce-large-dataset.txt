@@ -1,0 +1,28 @@
+Dataset:
+- File: sales_records_5m.csv
+- Size: ~596 MB (624001733 bytes)
+- Rows: ~5,000,000
+- HDFS path: /sales/input/sales_records_5m.csv
+HDFS upload verification:
+$ hdfs dfs -ls /sales/input
+-rw-r--r--   1 hadoop supergroup 624001733 2026-01-15 /sales/input/sales_records_5m.csv
+MapReduce execution:
+$ hadoop jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.6.jar \
+wordcount /sales/input /sales/output
+Output verification:
+hadoop@LAPTOP-E6D3MKM7:~/sales-data$ hdfs dfs -ls /sales/output
+Found 2 items
+-rw-r--r--   1 hadoop supergroup          0 2026-01-15 21:51 /sales/output/_SUCCESS
+-rw-r--r--   1 hadoop supergroup  224529454 2026-01-15 21:51 /sales/output/part-r-00000
+Sample output:
+hadoop@LAPTOP-E6D3MKM7:~/sales-data$ hdfs dfs -cat /sales/output/part-r-00000 | head
+,Baby   15800
+,Beverages,Offline,C,1/1/2014,167793691,1/4/2014,2737,47.45,31.79,129870.65,87009.23,42861.42       3
+,Beverages,Offline,C,1/1/2017,396029508,1/1/2017,2787,47.45,31.79,132243.15,88598.73,43644.42       3
+,Beverages,Offline,C,1/1/2018,286600530,2/16/2018,320,47.45,31.79,15184.00,10172.80,5011.20 2
+,Beverages,Offline,C,1/1/2019,919031083,2/13/2019,575,47.45,31.79,27283.75,18279.25,9004.50 3
+,Beverages,Offline,C,1/11/2014,721207654,1/28/2014,227,47.45,31.79,10771.15,7216.33,3554.82 3
+,Beverages,Offline,C,1/12/2011,237223422,2/11/2011,8537,47.45,31.79,405080.65,271391.23,133689.42   3
+,Beverages,Offline,C,1/12/2015,813134467,1/31/2015,3413,47.45,31.79,161946.85,108499.27,53447.58    3
+,Beverages,Offline,C,1/12/2018,397118699,1/19/2018,5103,47.45,31.79,242137.35,162224.37,79912.98    2
+,Beverages,Offline,C,1/13/2017,506547677,1/25/2017,7569,47.45,31.79,359149.05,240618.51,118530.54   2
