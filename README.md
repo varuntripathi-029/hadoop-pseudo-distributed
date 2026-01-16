@@ -125,3 +125,11 @@ Run:
 ```bash
 git status
 
+
+Phase 2: https://github.com/varuntripathi-029/hadoop-docker-single-node
+This repository provides a fully reproducible single-node pseudo-distributed Apache Hadoop setup using Docker.
+It includes HDFS, YARN, and MapReduce, configured to run entirely inside a container with no dependency on host Hadoop installations.
+
+The goal is infrastructure reproducibility, not a prebuilt demo image.
+
+
